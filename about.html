@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About fiv works</title>
+    <!-- Modern Serif Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Fade in animation for the about page content right after the transition */
+        body.about-page {
+            animation: fadeInPage 0.8s ease-out;
+        }
+
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .back-link {
+            color: var(--body-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .back-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--body-text);
+            transition: width 0.3s ease;
+        }
+
+        .back-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="about-page">
+
+    <!-- Pinned Header -->
+    <header class="pinned-header">
+        <div class="header-left">
+            <a href="index.html" class="nav-link fiv-link">fiv works</a>
+        </div>
+        <div class="header-center"></div>
+        <div class="header-right">
+            <a href="index.html" class="close-btn" aria-label="Close About Page">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </header>
+
+    <div class="about-container">
+        <!-- Left Image (Dynamic width based on format) -->
+        <div class="about-image-wrapper">
+            <img src="bilder/portrait.jpg" alt="Portrait von fiv works" class="about-image">
+            <h1 class="about-name">fiv works</h1>
+        </div>
+
+        <!-- Right Content -->
+        <div class="about-info">
+            <h2>Strategische Designkonzepte <br> treffen lebendige Illustrationen</h2>
+            <p>
+
+                Hallihallo, ich bin Fiona. <br> Als Kommunikationsdesignerin mit einer Leidenschaft für Illustrationen
+                erschaffe ich visuelle Welten, <br> die Geschichten erzählen und Marken eine eigene und
+                unverwechselbare Stimme
+                geben.
+
+                Ich kombiniere präzises Grafikdesign mit persönlichen Illustrationen. Für Agenturen entwickle ich
+                Key-Visuals, individuelle und ganzheitliche Brandings mit illustrativem Charme für Freelancer:innen.
+                <br> Mein Ziel bleibt es, Komplexität clever darzustellen und nahbar zu machen.
+
+                <br> Lust die Würfel nochmal neu zu werfen? <br> Ich biete mehr als nur sechs Seiten.<br>
+            <div class="nav-link cycling-logo about-text-logo">
+                <div class="cycling-viewport">
+                    <div class="cycling-wrapper">
+                        <span>art works</span>
+                        <span>net works</span>
+                        <span>team works</span>
+                        <span>fiv works</span>
+                    </div>
+                </div>
+            </div>
+            </p>
+
+
+            <div class="cv-separator-line"></div>
+            <div class="cv-container">
+                <div class="cv-item">
+                    <span class="cv-date">2021 – 2026</span>
+                    <span class="cv-desc">Bachelor Kommunikationsdesign | Fachhochschule Potsdam</span>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2024 – 2025</span>
+                    <span class="cv-desc">Auslandssemester | King Mongkhut University of Technology Thonburi |
+                        Bangkok</span>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2026</span>
+                    <span class="cv-desc">Selbständige Projekte | Ausstellungsdesign, Logoentwicklung</span>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2025</span>
+                    <span class="cv-desc">Praktikum | Designagentur Strichpunkt | Berlin</span>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2021 – 2024</span>
+                    <span class="cv-desc">Werkstudentin | Videoschnitt, Kommunikations- und Kollaborations- lösungen
+                        basierend auf Atlassian, Microsoft, Staffbase | Communardo</span>
+                </div>
+                <div class="cv-item">
+                    <span class="cv-date">2022</span>
+                    <span class="cv-desc">Aushilfe | IF Design Award</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

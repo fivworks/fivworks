@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fiv works - Portfolio</title>
+    <!-- Modern Sans-serif Font for Premium Feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Overlay Menu -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-content">
+            <a href="mailto:fiona.warmdt@icloud.com">Mail</a>
+            <a href="https://www.instagram.com/fiv.works?igsh=NmEyYzA0a2psNG5n&utm_source=qr" target="_blank"
+                rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.linkedin.com/in/fiona-warmdt-072200236/" target="_blank"
+                rel="noopener noreferrer">LinkedIn</a>
+            <a href="index.html#projects">Zu meinen Projekten</a>
+        </div>
+    </div>
+
+    <!-- Pinned Header -->
+    <header class="pinned-header">
+        <div class="header-left">
+            <a href="about.html" class="nav-link fiv-link cycling-logo">
+                <div class="cycling-viewport">
+                    <div class="cycling-wrapper">
+                        <span>art works</span>
+                        <span>net works</span>
+                        <span>team works</span>
+                        <span>fiv works</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="header-center">
+            <img src="bilder/Unterschrift_Kürzel_fiw_mittel.png" alt="fiv works logo" class="center-logo">
+        </div>
+        <div class="header-right">
+            <!-- Hamburger menu -->
+            <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Interactive 3D Cube Hero Section -->
+        <section class="hero-section">
+            <div class="scene">
+                <div class="cube" id="cube">
+                    <!-- 6 faces for 6 projects -->
+                    <div class="cube-face cube-front"><img src="bilder/Würfel/Würfel3.jpg" alt="Project 1">
+                    </div>
+                    <div class="cube-face cube-back"><img src="bilder/Würfel/Würfel2.jpg" alt="Project 4">
+                    </div>
+                    <div class="cube-face cube-right"><img src="bilder/Würfel/Würfel4.jpg" alt="Project 3">
+                    </div>
+                    <div class="cube-face cube-left"><img src="bilder/Würfel/Würfel6.jpg" alt="Project 2">
+                    </div>
+                    <div class="cube-face cube-top"><img src="bilder/Würfel/Würfelich.jpg" alt="Project 5">
+                    </div>
+                    <div class="cube-face cube-bottom"><img src="bilder/Würfel/Würfel.jpg" alt="Project 6">
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="text-container">
+                <p class="placeholder-text">
+                    SECHS WÜRFELSEITEN,<br> UNENDLICHE MÖGLICHKEITEN.<br> ICH KOMBINIERE PRÄZISES DESIGN<br>
+                    MIT ILLUSTRATIVEM CHARAKTER.<br>
+                    <span class="serif-text">Bereit alle Seiten zu entdecken? Lasst uns zusammen durchstarten.</span>
+                </p>
+            </div>
+
+            <div class="projects-grid" id="projects">
+                <a href="butterbodies.html" class="project-link">
+                    <img src="bilder/01_ButterBodies/BB1.jpg" alt="Project 1">
+                    <div class="project-overlay">
+                        <h3>ButterBodies</h3>
+                    </div>
+                </a>
+                <a href="brandinggemüse.html" class="project-link">
+                    <img src="bilder/02_Gemüsebox/gemüse.png" alt="Project 4">
+                    <div class="project-overlay">
+                        <h3>Rebranding einer Gemuesekiste</h3>
+                    </div>
+                </a>
+                <a href="editorialvermissen.html" class="project-link">
+                    <img src="bilder/03_Editorial/editorialseiten.png" alt="Project 3">
+                    <div class="project-overlay">
+                        <h3>Eine Hommage an das Vermissen</h3>
+                    </div>
+                </a>
+                <a href="periode.html" class="project-link">
+                    <img src="bilder/04_Periode/periodencover.jpg" alt="Project 2">
+                    <div class="project-overlay">
+                        <h3>Bilderbuch zur Normalisierung der Periode</h3>
+                    </div>
+                </a>
+                <a href="Hydrocephalus.html" class="project-link">
+                    <img src="bilder/05_Hydrocephalus/coverindex.jpg" alt="Project 5">
+                    <div class="project-overlay">
+                        <h3>Medizinisches Kinderbuch</h3>
+                    </div>
+                </a>
+                <a href="about.html" class="project-link">
+                    <img src="bilder/mio.jpg" alt="Project 6">
+                    <div class="project-overlay">
+                        <h3>Das bin ich</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Right Callout -->
+    <a href="about.html" class="branding-callout">
+        personalised branding solutions
+    </a>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
