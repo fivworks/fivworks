@@ -619,6 +619,7 @@ body {
 .text-container {
     max-width: 1200px;
     text-align: left;
+    margin-top: -60px;
     margin-bottom: 150px;
     align-self: flex-start;
     /* Push to left in flex container */
@@ -746,6 +747,7 @@ body {
     .pinned-header {
         padding: 0 20px;
         --header-height: 70px;
+        background-color: white;
     }
 
     .menu-content a {
@@ -993,7 +995,7 @@ body {
 
 .project-left-col {
     width: 35%;
-    padding: calc(var(--header-height) + 2rem) 5% 4rem;
+    padding: calc(var(--header-height) + 2rem) 40px 4rem 5%;
     position: sticky;
     top: 0;
     height: 100vh;
