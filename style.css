@@ -747,7 +747,6 @@ body {
     .pinned-header {
         padding: 0 20px;
         --header-height: 70px;
-        background-color: white;
     }
 
     .menu-content a {
