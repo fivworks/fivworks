@@ -63,6 +63,11 @@ body {
     letter-spacing: 2px;
 }
 
+/* Global utility to hide mobile-only elements on desktop */
+.show-on-mobile {
+    display: none !important;
+}
+
 /* ---------------------------------
    Pinned Header (Top Navigation)
 ---------------------------------- */
@@ -752,7 +757,20 @@ body {
     }
 
     .placeholder-text {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
+    }
+
+    /* Target specific mobile elements */
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    .show-on-mobile {
+        display: inline-block !important;
+    }
+
+    .project-page .center-logo {
+        display: none !important;
     }
 
     /* Scale down cube for mobile */
