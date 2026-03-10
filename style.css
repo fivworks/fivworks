@@ -643,6 +643,11 @@ body {
     color: var(--body-text);
 }
 
+.serif-q {
+    font-family: 'Serifbabe', serif;
+    font-weight: 400;
+}
+
 .serif-text {
     font-family: 'Serifbabe', serif;
     font-size: 1.1rem;
@@ -659,7 +664,7 @@ body {
     gap: 60px;
     width: 100%;
     max-width: 1400px;
-    scroll-margin-top: 150px;
+    scroll-margin-top: calc(var(--header-height) + 40px);
     /* Provides white space above grid when targeted by anchor link */
 }
 
@@ -753,11 +758,12 @@ body {
     }
 
     .text-container {
+        margin-top: -60px;
         margin-bottom: 80px;
     }
 
     .placeholder-text {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
 
     /* Target specific mobile elements */
@@ -993,7 +999,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .project-left-col p {
