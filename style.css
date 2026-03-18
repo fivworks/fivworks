@@ -885,12 +885,11 @@ body {
 }
 
 .about-info {
-    margin-left: var(--img-w);
-    width: calc(100vw - var(--img-w));
-    padding: 15vh 8%;
+    width: 50vw;
+    padding: calc(var(--header-height) + 40px) 5% 3.2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     min-height: 100vh;
 }
 
@@ -995,13 +994,14 @@ body {
 
 .project-left-col {
     width: 35%;
-    padding: calc(var(--header-height) + 2rem) 5% 4rem;
+    /* Harmonized top/bottom spacing: Bottom padding matches header vertical centering gap */
+    padding: calc(var(--header-height) + 2rem) 5% 3.2rem;
     position: sticky;
     top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
 }
 
 .project-left-col p {
