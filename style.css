@@ -885,7 +885,8 @@ body {
 }
 
 .about-info {
-    width: 50vw;
+    margin-left: var(--img-w);
+    width: calc(100vw - var(--img-w));
     padding: calc(var(--header-height) + 40px) 5% 3.2rem;
     display: flex;
     flex-direction: column;
