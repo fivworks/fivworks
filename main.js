@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoSpeedY = 0.4;
 
     let clickStartTime = 0;
-    let isRolling = false; // Prevents interactions during the roll animation
+    // Removing isRolling state as we are disabling the roll animation
 
     // The main render loop for the cube
     function animateCube() {
-        if (!isDragging && !isRolling && isCubeInView) {
+        if (!isDragging && isCubeInView) {
             rotY += autoSpeedY;
             rotX += autoSpeedX;
             applyCubeTransform();
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mouse Events for Desktop drag and click
     document.addEventListener('mousedown', (e) => {
-        if (e.target.closest('.cube') && !isRolling) {
+        if (e.target.closest('.cube')) {
             isDragging = true;
             previousX = e.clientX;
             previousY = e.clientY;
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('mousemove', (e) => {
-        if (isDragging && !isRolling) {
+        if (isDragging) {
             const deltaX = e.clientX - previousX;
             const deltaY = e.clientY - previousY;
 
@@ -102,35 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check if it was a quick click rather than a drag
             const timeElapsed = Date.now() - clickStartTime;
-            if (timeElapsed < 250 && !isRolling) {
-                rollDice();
+            if (timeElapsed < 250) {
+                const face = e.target.closest('.cube-face');
+                if (face && face.dataset.link) {
+                    window.location.href = face.dataset.link;
+                }
             }
         }
     });
 
-    function rollDice() {
-        isRolling = true;
-        // Less aggressive: 1 full rotation + random angle
-        const newRotX = rotX + 360 + Math.floor(Math.random() * 180);
-        const newRotY = rotY + 360 + Math.floor(Math.random() * 180);
+    // Removed rollDice function
 
-        // Standard ease-out curve prevents the long visual "hang" at the end
-        cube.style.transition = 'transform 1.5s ease-out';
-
-        rotX = newRotX;
-        rotY = newRotY;
-        applyCubeTransform();
-
-        // Re-enable interactions exactly when the visible movement ends
-        setTimeout(() => {
-            isRolling = false;
-            cube.style.transition = 'none'; // Reset to none for dragging
-        }, 1500);
-    }
 
     // Touch Events for Mobile drag
     document.addEventListener('touchstart', (e) => {
-        if (e.target.closest('.cube') && !isRolling) {
+        if (e.target.closest('.cube')) {
             isDragging = true;
             previousX = e.touches[0].clientX;
             previousY = e.touches[0].clientY;
@@ -140,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('touchmove', (e) => {
-        if (isDragging && !isRolling) {
+        if (isDragging) {
             // Prevent page scrolling while dragging the cube
             if (e.cancelable) e.preventDefault();
 
@@ -163,8 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check if it was a quick tap rather than a swipe
             const timeElapsed = Date.now() - clickStartTime;
-            if (timeElapsed < 250 && !isRolling) {
-                rollDice();
+            if (timeElapsed < 250) {
+                const face = e.target.closest('.cube-face');
+                if (face && face.dataset.link) {
+                    window.location.href = face.dataset.link;
+                }
             }
         }
     });
