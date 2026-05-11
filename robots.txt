@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /font/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://fivworks.de/sitemap.xml
