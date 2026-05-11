@@ -388,6 +388,7 @@ body {
     flex-direction: column;
     gap: 40px;
     text-align: center;
+    align-items: center;
 }
 
 .menu-content a {
@@ -423,6 +424,7 @@ body {
 .menu-content a:hover {
     color: var(--accent-color);
     transform: translateX(15px) !important;
+    transition: color 0s, transform 0s;
     transition-delay: 0s;
 }
 
