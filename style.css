@@ -4,30 +4,38 @@
 */
 @font-face {
     font-family: 'Serifbabe';
-    src: url('font/Serifbabe /SerifbabeALPHATest-Regular.otf') format('opentype');
+    src: url('font/Serifbabe /SerifbabeALPHATest-Regular.woff2') format('woff2'),
+         url('font/Serifbabe /SerifbabeALPHATest-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Serifbabe';
-    src: url('font/Serifbabe /SerifbabeALPHATest-RegularItalic.otf') format('opentype');
+    src: url('font/Serifbabe /SerifbabeALPHATest-RegularItalic.woff2') format('woff2'),
+         url('font/Serifbabe /SerifbabeALPHATest-RegularItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Canava Grotesk';
-    src: url('font/Canava Grotesk/CanavaGrotesk-Regular.otf') format('opentype');
+    src: url('font/Canava Grotesk/CanavaGrotesk-Regular.woff2') format('woff2'),
+         url('font/Canava Grotesk/CanavaGrotesk-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Canava Grotesk';
-    src: url('font/Canava Grotesk/CanavaGrotesk-RegularItalic.otf') format('opentype');
+    src: url('font/Canava Grotesk/CanavaGrotesk-RegularItalic.woff2') format('woff2'),
+         url('font/Canava Grotesk/CanavaGrotesk-RegularItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
+    font-display: swap;
 }
 
 :root {
