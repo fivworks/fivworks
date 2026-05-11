@@ -422,9 +422,8 @@ body {
 }
 
 .menu-content a:hover {
-    color: var(--accent-color);
-    transform: translateX(15px) !important;
-    transition: color 0s, transform 0s;
+    opacity: 0.4;
+    transition: opacity 0s;
     transition-delay: 0s;
 }
 
