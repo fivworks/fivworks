@@ -401,6 +401,18 @@ body {
     opacity: 0;
     /* Animated in with JS */
     transform: translateY(20px);
+    position: relative;
+}
+
+.menu-content a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--body-text);
+    transition: width 0.3s ease;
 }
 
 .menu-overlay.active .menu-content a {
@@ -423,10 +435,12 @@ body {
 
 /* Override stagger delays on hover */
 .menu-overlay.active .menu-content a:hover {
-    opacity: 0.4 !important;
     transform: translateY(0) !important;
-    transition: opacity 0.15s ease !important;
     transition-delay: 0s !important;
+}
+
+.menu-overlay.active .menu-content a:hover::after {
+    width: 100%;
 }
 
 /* ---------------------------------
