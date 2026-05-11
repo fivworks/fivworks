@@ -421,11 +421,12 @@ body {
     transition-delay: 0.3s;
 }
 
-/* Higher specificity than stagger rules to override transition-delay */
+/* Override stagger delays on hover */
 .menu-overlay.active .menu-content a:hover {
-    opacity: 0.4;
-    transition: opacity 0.15s ease;
-    transition-delay: 0s;
+    opacity: 0.4 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.15s ease !important;
+    transition-delay: 0s !important;
 }
 
 /* ---------------------------------
