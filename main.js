@@ -196,6 +196,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroSection) performanceObserver.observe(heroSection);
 
     /* =========================================================================
+       5. Sticky Buy Bar (ButterBodies page)
+    ========================================================================= */
+    const stickyBar = document.getElementById('sticky-bar');
+    const buySection = document.getElementById('buy');
+
+    if (stickyBar && buySection) {
+        const firstSection = document.querySelector('.project-split-layout');
+
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.target === firstSection) {
+                    if (!entry.isIntersecting) {
+                        stickyBar.classList.add('visible');
+                    }
+                }
+                if (entry.target === buySection) {
+                    if (entry.isIntersecting) {
+                        stickyBar.classList.remove('visible');
+                    } else if (window.scrollY > firstSection.offsetHeight) {
+                        stickyBar.classList.add('visible');
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        stickyObserver.observe(firstSection);
+        stickyObserver.observe(buySection);
+    }
+
+    /* =========================================================================
        4. Delayed Logo Expansion on About Page
     ========================================================================= */
     const isAboutPage = window.location.pathname.includes('about.html');

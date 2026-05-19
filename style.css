@@ -1099,6 +1099,222 @@ body {
     margin: 0 auto;
 }
 
+/* ---------------------------------
+   ButterBodies Page Header Overrides
+---------------------------------- */
+.butterbodies-page .pinned-header {
+    mix-blend-mode: normal;
+}
+
+.butterbodies-page .pinned-header .close-btn span {
+    background-color: var(--body-text);
+}
+
+.butterbodies-page .pinned-header .center-logo {
+    filter: none;
+}
+
+/* Fixed product image — covers right 65% of viewport */
+.bb-fixed-image {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 65%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bb-fixed-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Left col sits above fixed image and header (so button is clickable) */
+.butterbodies-page .project-left-col {
+    z-index: 101;
+}
+
+/* kaufen button: top of left col, aligned with header height, 1.5cm from text edge */
+.butterbodies-page .project-left-col .top-buy-wrap {
+    position: absolute;
+    top: calc(var(--header-height) / 2 - 46px);
+    left: calc(5% + 1.2cm);
+    padding: 0;
+}
+
+/* Buy section right col sits above fixed image, transparent (button sits on image) */
+.butterbodies-page #buy .project-right-col {
+    position: relative;
+    z-index: 2;
+    padding-left: 1.5cm;
+}
+
+@media (max-width: 768px) {
+    .bb-fixed-image {
+        display: none;
+    }
+}
+
+.stripe-buy-btn--sm {
+    font-size: 0.75rem;
+    padding: 8px 20px;
+    letter-spacing: 1px;
+}
+
+.top-buy-wrap {
+    display: flex;
+    align-items: center;
+    padding: calc(var(--header-height) / 2 - 12px) 5%;
+    height: var(--header-height);
+}
+
+/* ---------------------------------
+   Inline CTAs
+---------------------------------- */
+.inline-cta {
+    padding: 1.5rem 5%;
+    text-align: right;
+}
+
+.inline-cta a {
+    font-family: 'Serifbabe', serif;
+    font-size: 1.1rem;
+    color: var(--body-text);
+    text-decoration: none;
+    position: relative;
+    text-transform: none;
+    letter-spacing: 1px;
+}
+
+.inline-cta a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--body-text);
+    transition: width 0.3s ease;
+}
+
+.inline-cta a:hover::after {
+    width: 100%;
+}
+
+.inline-cta--strong a {
+    font-size: 1.3rem;
+}
+
+/* ---------------------------------
+   Stripe Buy Button
+---------------------------------- */
+.stripe-buy-btn {
+    display: inline-block;
+    background-color: #ffab00;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.stripe-buy-btn:hover {
+    background-color: #e69a00;
+}
+
+/* ---------------------------------
+   Buy Section
+---------------------------------- */
+#buy {
+    scroll-margin-top: var(--header-height);
+    min-height: auto;
+}
+
+#buy .project-left-col {
+    position: relative;
+    height: auto;
+    padding-top: 2rem;
+}
+
+#buy .buy-widget {
+    padding-top: 1cm;
+}
+
+.buy-price-display {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.buy-widget {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-bottom: 3.2rem;
+}
+
+/* ---------------------------------
+   Sticky Buy Bar
+---------------------------------- */
+.sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 5%;
+    background: #ffab00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.sticky-bar.visible {
+    transform: translateY(0);
+}
+
+.sticky-bar__price {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #0c0c0c;
+}
+
+.sticky-bar__btn {
+    font-family: 'Serifbabe', serif;
+    font-size: 1rem;
+    color: #0c0c0c;
+    text-decoration: none;
+    border: 1px solid #0c0c0c;
+    padding: 8px 24px;
+    border-radius: 40px;
+    transition: background 0.2s;
+    text-transform: none;
+    letter-spacing: 1px;
+}
+
+.sticky-bar__btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 1024px) {
     .cv-item {
         grid-template-columns: 140px 1fr;
@@ -1184,5 +1400,28 @@ body {
         top: 25px;
         /* Adjust for smaller 70px mobile header */
         font-size: calc(100vw * 0.22);
+    }
+}
+
+/* ---------------------------------
+   Mobile: Inline CTAs, Buy, Sticky Bar
+---------------------------------- */
+@media (max-width: 768px) {
+    .inline-cta {
+        text-align: left;
+        padding: 1.5rem 5%;
+    }
+
+    .buy-widget {
+        min-height: auto;
+        padding: 2rem 5%;
+    }
+
+    .sticky-bar {
+        padding: 10px 20px;
+    }
+
+    .sticky-bar__price {
+        font-size: 0.75rem;
     }
 }
