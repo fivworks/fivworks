@@ -1130,20 +1130,29 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
-/* Left col sits above fixed image and header (so button is clickable) */
+/* Left col sits above fixed image */
 .butterbodies-page .project-left-col {
-    z-index: 101;
+    z-index: 2;
 }
 
-/* kaufen button: top of left col, aligned with header height, 1.5cm from text edge */
-.butterbodies-page .project-left-col .top-buy-wrap {
+/* Weißer Balken hinter kaufen-Button — endet bündig mit dem Kartenbild */
+.butterbodies-page .pinned-header::before {
+    content: '';
     position: absolute;
-    top: calc(var(--header-height) / 2 - 46px);
-    left: calc(5% + 1.2cm);
-    padding: 0;
+    left: 0;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: -1;
+}
+
+/* kaufen button im Header: bündig mit Text (kein extra margin nötig) */
+.butterbodies-page .header-left .bb-header-btn {
+    margin-left: 0;
 }
 
 /* Buy section right col sits above fixed image, transparent (button sits on image) */
@@ -1153,9 +1162,92 @@ body {
     padding-left: 1.5cm;
 }
 
+/* Bilder: linke Spalte, natürliche Größe */
+.bb-image-break {
+    width: 35%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+
+.bb-image-break img,
+.bb-image-break video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Abschluss-Sektion */
+.bb-cta-section {
+    min-height: 50vh;
+    padding-bottom: 0;
+}
+
+.bb-cta-section .project-left-col {
+    position: relative;
+}
+
+.butterbodies-page .bb-cta-section .project-right-col {
+    position: relative;
+    z-index: 2;
+    padding-left: 1.5cm;
+}
+
+/* Desktop: mobile-hero versteckt */
+.project-right-col .bb-mobile-hero {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .bb-fixed-image {
         display: none;
+    }
+
+    .bb-mobile-hero {
+        display: block;
+        width: 100%;
+        height: 65vh;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .project-split-layout:first-of-type .project-right-col {
+        order: -1;
+        width: 100%;
+    }
+
+    .butterbodies-page .project-left-col .top-buy-wrap {
+        position: relative;
+        top: auto;
+        left: auto;
+        padding: 1.5rem 0 1rem;
+        height: auto;
+    }
+
+    #buy .project-left-col {
+        padding-top: 2rem;
+    }
+
+    .butterbodies-page #buy .project-right-col,
+    .butterbodies-page .bb-cta-section .project-right-col {
+        padding-left: 0;
+        z-index: auto;
+    }
+
+    .bb-image-break {
+        width: 100%;
+        height: 40vh;
+    }
+
+    .bb-cta-section {
+        min-height: auto;
+        padding-bottom: 3rem;
+    }
+
+    .bb-cta-section .project-left-col {
+        height: auto;
+        padding-top: 2rem;
     }
 }
 
@@ -1243,7 +1335,7 @@ body {
 #buy .project-left-col {
     position: relative;
     height: auto;
-    padding-top: 2rem;
+    padding-top: 6rem;
 }
 
 #buy .buy-widget {
