@@ -364,8 +364,8 @@ body {
     -webkit-backdrop-filter: blur(15px);
     /* Safari support */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease;
@@ -387,8 +387,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    text-align: center;
-    align-items: center;
+    text-align: right;
+    align-items: flex-end;
+    padding-top: calc(var(--header-height) + 20px + 0.5cm);
+    padding-right: 5%;
 }
 
 .menu-content a {
@@ -431,6 +433,14 @@ body {
 
 .menu-overlay.active .menu-content a:nth-child(3) {
     transition-delay: 0.3s;
+}
+
+.menu-overlay.active .menu-content a:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.menu-overlay.active .menu-content a:nth-child(5) {
+    transition-delay: 0.5s;
 }
 
 /* Override stagger delays on hover */
@@ -879,35 +889,7 @@ body {
 }
 
 .about-name {
-    position: absolute;
-    top: 34px;
-    /* Matches fixed header alignment roughly */
-    left: 5%;
-    transform: none;
-    width: 90%;
-    text-align: left;
-    font-family: 'Serifbabe', serif;
-    font-size: 1.1rem;
-    /* Start at header size */
-    font-weight: 400;
-    letter-spacing: 2px;
-    text-transform: none;
-    color: #ffffff;
-    mix-blend-mode: difference;
-    white-space: nowrap;
-    margin: 0;
-    line-height: 0.9;
-    opacity: 0;
-    /* Hidden initially to avoid double logo until expansion starts */
-    transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 100;
-}
-
-.about-name.expanded {
-    top: 5%;
-    font-size: calc(var(--img-w) * 0.19);
-    letter-spacing: 1px;
-    opacity: 1;
+    display: none;
 }
 
 .about-info {
@@ -920,15 +902,10 @@ body {
     min-height: 100vh;
 }
 
-/* Coordinate visibility with header logo */
+/* Keep header logo visible even when cached JS adds .expanding */
 .about-page.expanding .pinned-header .header-left .fiv-link {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
-.about-page.expanding .about-name {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .about-info h2 {
@@ -976,7 +953,7 @@ body {
 }
 
 .cv-container {
-    margin-top: 3rem;
+    margin-top: 9rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -1106,6 +1083,14 @@ body {
     mix-blend-mode: normal;
 }
 
+.butterbodies-page .pinned-header .nav-link {
+    color: var(--body-text);
+}
+
+.butterbodies-page .pinned-header .nav-link::after {
+    background-color: var(--body-text);
+}
+
 .butterbodies-page .pinned-header .close-btn span {
     background-color: var(--body-text);
 }
@@ -1139,16 +1124,6 @@ body {
 }
 
 /* Weißer Balken hinter kaufen-Button — endet bündig mit dem Kartenbild */
-.butterbodies-page .pinned-header::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 35%;
-    height: 100%;
-    background-color: #ffffff;
-    z-index: -1;
-}
 
 /* kaufen button im Header: bündig mit Text (kein extra margin nötig) */
 .butterbodies-page .header-left .bb-header-btn {
@@ -1168,6 +1143,7 @@ body {
     height: auto;
     position: relative;
     z-index: 2;
+    margin-left: -0.8%;
 }
 
 
@@ -1178,20 +1154,57 @@ body {
     display: block;
 }
 
+/* Studientext über das Video legen */
+.bb-image-break + .project-split-layout {
+    margin-top: -62.2vw;
+    min-height: 62.2vw;
+    position: relative;
+    z-index: 3;
+}
+
+.bb-image-break + .project-split-layout .project-left-col {
+    position: relative;
+    height: auto;
+    justify-content: flex-start;
+    padding-top: calc(50.5vw + 1.5cm);
+}
+
 /* Abschluss-Sektion */
 .bb-cta-section {
-    min-height: 50vh;
-    padding-bottom: 0;
+    padding: 8rem 5% 5rem;
+    position: relative;
+    z-index: 4;
 }
 
-.bb-cta-section .project-left-col {
+.bb-cta-section p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--body-text);
+    font-weight: 400;
+    text-transform: none;
+    max-width: 400px;
+}
+
+/* Inline text links (z.B. "Hier gehts zum Shop") */
+.bb-cta-section a {
+    color: var(--body-text);
+    text-decoration: none;
     position: relative;
 }
 
-.butterbodies-page .bb-cta-section .project-right-col {
-    position: relative;
-    z-index: 2;
-    padding-left: 1.5cm;
+.bb-cta-section a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: var(--body-text);
+    transition: width 0.3s ease;
+}
+
+.bb-cta-section a:hover::after {
+    width: 100%;
 }
 
 /* Desktop: mobile-hero versteckt */
@@ -1306,22 +1319,24 @@ body {
 ---------------------------------- */
 .stripe-buy-btn {
     display: inline-block;
-    background-color: #ffab00;
-    color: #ffffff;
+    width: 160px;
+    height: 64px;
+    background-image: url('bilder/button_hierkaufen.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    color: transparent;
+    font-size: 0;
     text-decoration: none;
-    padding: 12px 28px;
-    border-radius: 40px;
-    font-family: 'Canava Grotesk', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: lowercase;
-    letter-spacing: 2px;
-    transition: background-color 0.2s;
-    white-space: nowrap;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .stripe-buy-btn:hover {
-    background-color: #e69a00;
+    transform: translateY(-3px) scale(1.04);
 }
 
 /* ---------------------------------
@@ -1391,20 +1406,25 @@ body {
 }
 
 .sticky-bar__btn {
-    font-family: 'Serifbabe', serif;
-    font-size: 1rem;
-    color: #0c0c0c;
+    display: inline-block;
+    width: 130px;
+    height: 52px;
+    background-image: url('bilder/button_hierkaufen.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    color: transparent;
+    font-size: 0;
     text-decoration: none;
-    border: 1px solid #0c0c0c;
-    padding: 8px 24px;
-    border-radius: 40px;
-    transition: background 0.2s;
-    text-transform: none;
-    letter-spacing: 1px;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .sticky-bar__btn:hover {
-    background: rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px) scale(1.04);
 }
 
 @media (max-width: 1024px) {
@@ -1488,11 +1508,6 @@ body {
         font-size: 1.8rem;
     }
 
-    .about-name {
-        top: 25px;
-        /* Adjust for smaller 70px mobile header */
-        font-size: calc(100vw * 0.22);
-    }
 }
 
 /* ---------------------------------
@@ -1515,5 +1530,252 @@ body {
 
     .sticky-bar__price {
         font-size: 0.75rem;
+    }
+}
+/* ---------------------------------
+   Shop Page
+---------------------------------- */
+.shop-page .pinned-header {
+    mix-blend-mode: normal;
+}
+
+.shop-page .project-link {
+    opacity: 1;
+    transform: none;
+    cursor: pointer;
+}
+
+/* Shop Grid */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.shop-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.shop-item .shop-card {
+    width: 100%;
+}
+
+.shop-item-btn {
+    align-self: flex-start;
+    display: inline-block;
+    width: 160px;
+    height: 64px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 2;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-color: transparent;
+    color: transparent;
+    font-size: 0;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    line-height: 0;
+    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.shop-item-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+}
+
+.btn-spiel {
+    background-image: url('bilder/button_Spiel.png');
+}
+
+.btn-postkarten {
+    background-image: url('bilder/button_Postkarten.png');
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-img-wrap {
+    max-width: 80vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.lightbox.active .lightbox-img-wrap {
+    transform: scale(1);
+}
+
+.lightbox-img-wrap img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 28px;
+    right: 36px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.lightbox-close span {
+    background-color: var(--body-text);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 32px;
+    opacity: 0.25;
+    transition: opacity 0.25s;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-prev::before,
+.lightbox-next::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 1px solid var(--body-text);
+    border-right: 1px solid var(--body-text);
+}
+
+.lightbox-prev::before {
+    transform: rotate(-135deg);
+}
+
+.lightbox-next::before {
+    transform: rotate(45deg);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover { opacity: 0.8; }
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(0, 0, 0, 0.3);
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.lightbox-buy-btn {
+    position: absolute;
+    bottom: 48px;
+    right: calc(10vw - 14px); /* bündig zur rechten Bildkante */
+}
+
+@media (max-width: 768px) {
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.shop-page .pinned-header .nav-link {
+    color: var(--body-text);
+}
+
+.shop-page .pinned-header .close-btn span,
+.shop-page .pinned-header .hamburger span {
+    background-color: var(--body-text);
+}
+
+.shop-page .pinned-header .center-logo {
+    filter: none;
+}
+
+.shop-hero .project-left-col {
+    min-height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+}
+
+.shop-product .project-left-col {
+    padding-top: 4rem;
+}
+
+.shop-product-title {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+}
+
+.shop-buy-btn {
+    margin-top: 1rem;
+}
+
+.shop-product-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-product-img img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top;
+}
+
+@media (max-width: 768px) {
+    .shop-product {
+        flex-direction: column;
+    }
+
+    .shop-product-img {
+        width: 100%;
+        order: -1;
+    }
+
+    .shop-product-img img {
+        height: 60vw;
+        object-fit: cover;
+    }
+
+    .shop-product .project-left-col {
+        padding-top: 2rem;
     }
 }
