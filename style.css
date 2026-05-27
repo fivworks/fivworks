@@ -1019,11 +1019,10 @@ body {
 
 .project-left-col .large-intro {
     font-size: 1.8rem;
-    /* Significantly larger */
     line-height: 1.2;
     display: block;
-    /* Ensure it takes up space properly */
     margin-bottom: 0.5rem;
+    word-spacing: -0.08em;
 }
 
 .project-left-col .footnote {
@@ -1541,6 +1540,11 @@ body {
 
 .shop-page .pinned-header .nav-link {
     color: var(--body-text);
+    cursor: pointer;
+}
+
+.shop-page .pinned-header .nav-link::after {
+    background-color: var(--body-text);
 }
 
 .shop-page .pinned-header .close-btn span,
@@ -1923,10 +1927,16 @@ body {
 ============================================ */
 
 /* Reversed split layout: media left col, text right col */
+.bb-split-reversed {
+    min-height: auto;
+}
+
 .bb-split-reversed .bb-media-col {
+    position: relative;
+    height: auto;
     justify-content: center;
     align-items: center;
-    padding: 2rem 5%;
+    padding: 6rem 5%;
 }
 
 .bb-split-reversed .bb-media-col video {
@@ -1938,9 +1948,24 @@ body {
 
 .bb-split-reversed .bb-text-col {
     display: flex;
-    align-items: center;
-    padding: 4rem 5% 4rem 2rem;
+    align-items: stretch;
+    padding: 6rem 5% 6rem 0;
     overflow: visible;
+}
+
+.bb-split-reversed .bb-text-col .bb-detail-context__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8.8rem;
+    max-width: none;
+    flex: 1;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.bb-detail-context__inner .bb-detail-context__body p {
+    margin-bottom: 0;
 }
 
 .bb-detail-cta {
@@ -1989,9 +2014,7 @@ body {
 
 .bb-detail-fullimg img {
     width: 100%;
-    max-height: 85vh;
-    object-fit: cover;
-    object-position: center;
+    object-fit: contain;
     display: block;
 }
 
@@ -2014,9 +2037,10 @@ body {
     margin: 0 0 2rem 0;
 }
 
-.bb-detail-context__trust {
+.bb-detail-context__inner p.bb-detail-context__trust {
     opacity: 0.6;
     font-style: italic;
+    margin-bottom: 0;
 }
 
 /* Two images side by side */
