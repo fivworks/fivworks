@@ -1539,177 +1539,6 @@ body {
     mix-blend-mode: normal;
 }
 
-.shop-page .project-link {
-    opacity: 1;
-    transform: none;
-    cursor: pointer;
-}
-
-/* Shop Grid */
-.shop-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
-    width: 100%;
-    max-width: 1400px;
-}
-
-.shop-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-}
-
-.shop-item .shop-card {
-    width: 100%;
-}
-
-.shop-item-btn {
-    align-self: flex-start;
-    display: inline-block;
-    width: 160px;
-    height: 64px;
-    margin-top: 16px;
-    position: relative;
-    z-index: 2;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-color: transparent;
-    color: transparent;
-    font-size: 0;
-    text-decoration: none;
-    border: none;
-    padding: 0;
-    line-height: 0;
-    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.shop-item-btn:hover {
-    transform: translateY(-3px) scale(1.04);
-}
-
-.btn-spiel {
-    background-image: url('bilder/button_Spiel.png');
-}
-
-.btn-postkarten {
-    background-image: url('bilder/button_Postkarten.png');
-}
-
-/* Lightbox */
-.lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.97);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-.lightbox.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.lightbox-img-wrap {
-    max-width: 80vw;
-    max-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0.95);
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.lightbox.active .lightbox-img-wrap {
-    transform: scale(1);
-}
-
-.lightbox-img-wrap img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
-    display: block;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 28px;
-    right: 36px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.lightbox-close span {
-    background-color: var(--body-text);
-}
-
-.lightbox-prev,
-.lightbox-next {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0 32px;
-    opacity: 0.25;
-    transition: opacity 0.25s;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-prev::before,
-.lightbox-next::before {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-top: 1px solid var(--body-text);
-    border-right: 1px solid var(--body-text);
-}
-
-.lightbox-prev::before {
-    transform: rotate(-135deg);
-}
-
-.lightbox-next::before {
-    transform: rotate(45deg);
-}
-
-.lightbox-prev:hover,
-.lightbox-next:hover { opacity: 0.8; }
-
-.lightbox-counter {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(0, 0, 0, 0.3);
-    font-family: 'Canava Grotesk', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.lightbox-buy-btn {
-    position: absolute;
-    bottom: 48px;
-    right: calc(10vw - 14px); /* bündig zur rechten Bildkante */
-}
-
-@media (max-width: 768px) {
-    .shop-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-}
-
 .shop-page .pinned-header .nav-link {
     color: var(--body-text);
 }
@@ -1723,59 +1552,701 @@ body {
     filter: none;
 }
 
-.shop-hero .project-left-col {
-    min-height: 40vh;
+/* Shop Grid (Landing Page) */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.shop-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.shop-card {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.shop-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.shop-card:hover img {
+    transform: scale(1.03);
+}
+
+.shop-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
     display: flex;
     align-items: flex-end;
-    padding-bottom: 2rem;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-.shop-product .project-left-col {
-    padding-top: 4rem;
+.shop-card:hover .shop-card-overlay {
+    opacity: 1;
 }
 
-.shop-product-title {
+.shop-card-overlay span {
+    font-family: 'Serifbabe', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: none;
+    color: var(--text-color);
+    transform: translateY(30px);
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.shop-card:hover .shop-card-overlay span {
+    transform: translateY(0);
+}
+
+.shop-item-label {
     font-family: 'Canava Grotesk', sans-serif;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
-    display: block;
-}
-
-.shop-buy-btn {
+    color: var(--body-text);
+    opacity: 0.5;
     margin-top: 1rem;
 }
 
-.shop-product-img {
+@media (max-width: 768px) {
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* ---------------------------------
+   Shop Product Page (shop-butterbodies)
+---------------------------------- */
+
+/* Hero Section */
+.shop-hero-section {
+    display: flex;
+    min-height: 100vh;
+    padding-top: var(--header-height);
+}
+
+.shop-hero-image {
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
 }
 
-.shop-product-img img {
+.shop-hero-image img {
     width: 100%;
-    height: 100vh;
+    height: 85vh;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
+    border-radius: 8px;
 }
 
+.shop-hero-info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 5% 4rem 2rem;
+}
+
+.shop-hero-title {
+    font-family: 'Serifbabe', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 0.5rem 0;
+    color: var(--body-text);
+}
+
+.shop-hero-subtitle {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--body-text);
+    opacity: 0.6;
+    margin: 0 0 2.5rem 0;
+}
+
+.shop-hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+}
+
+.shop-hero-price {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--body-text);
+}
+
+.shop-hero-limit {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--body-text);
+    opacity: 0.5;
+}
+
+/* Shared buy button style */
+.shop-buy-button {
+    display: inline-block;
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    background-color: var(--body-text);
+    text-decoration: none;
+    padding: 16px 48px;
+    border-radius: 50px;
+    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.25s ease;
+    text-align: center;
+}
+
+.shop-buy-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+.shop-hero-shipping {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: var(--body-text);
+    opacity: 0.4;
+    margin-top: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Story Section */
+.shop-story {
+    padding: 10rem 5%;
+}
+
+.shop-story-inner {
+    max-width: 700px;
+}
+
+.shop-story-lead {
+    font-family: 'Serifbabe', serif;
+    font-size: 1.8rem;
+    line-height: 1.35;
+    margin: 0 0 2rem 0;
+    color: var(--body-text);
+}
+
+.shop-story-text {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--body-text);
+    margin: 0;
+}
+
+/* Details Section (52 Karten, 12 Challenges, etc.) */
+.shop-details {
+    padding: 8rem 5%;
+}
+
+.shop-details-inner {
+    display: flex;
+    gap: 6rem;
+}
+
+.shop-details-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.shop-details-number {
+    font-family: 'Serifbabe', serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--body-text);
+}
+
+.shop-details-label {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--body-text);
+    opacity: 0.5;
+}
+
+/* Image Break */
+.shop-image-break {
+    width: 100%;
+    padding: 0;
+}
+
+.shop-image-break img {
+    width: 100%;
+    display: block;
+}
+
+/* Context / Story Section 2 */
+.shop-context {
+    padding: 8rem 5%;
+}
+
+.shop-context-inner {
+    max-width: 600px;
+}
+
+.shop-context-inner p {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    margin: 0 0 2rem 0;
+}
+
+.shop-context-trust {
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Buy Section */
+.shop-buy-section {
+    padding: 6rem 5%;
+    scroll-margin-top: var(--header-height);
+}
+
+.shop-buy-inner {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.shop-buy-left {
+    width: 45%;
+    flex-shrink: 0;
+}
+
+.shop-buy-left img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+.shop-buy-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.shop-buy-title {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 0.5rem 0;
+    color: var(--body-text);
+}
+
+.shop-buy-price {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--body-text);
+}
+
+.shop-buy-details {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: var(--body-text);
+    opacity: 0.6;
+    margin: 0.5rem 0 1.5rem 0;
+}
+
+.shop-buy-payment {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: var(--body-text);
+    opacity: 0.35;
+    margin-top: 0.8rem;
+}
+
+/* Divider */
+.shop-divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--body-text);
+    opacity: 0.15;
+    margin: 4rem auto;
+}
+
+/* Postkarten: override hero for h2 */
+.shop-postkarten-section .shop-hero-title {
+    font-size: 2.5rem;
+}
+
+.shop-postkarten-section {
+    min-height: 70vh;
+    padding-bottom: 6rem;
+}
+
+/* ============================================
+   ButterBodies Detail Page (Editorial Layout)
+============================================ */
+
+/* Hero: Full-width product image */
+.bb-detail-hero {
+    padding: var(--header-height) 5% 0;
+}
+
+.bb-detail-hero img {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Intro: Two-column — media left, text right */
+.bb-detail-intro {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    padding: 8rem 5%;
+}
+
+.bb-detail-intro__media {
+    width: 40%;
+    flex-shrink: 0;
+}
+
+.bb-detail-intro__media img,
+.bb-detail-intro__media video {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+}
+
+.bb-detail-intro__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bb-detail-intro__lead {
+    font-family: 'Serifbabe', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--body-text);
+    margin: 0 0 2rem 0;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.bb-detail-intro__body {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--body-text);
+    margin: 0 0 1.5rem 0;
+}
+
+.bb-detail-cta {
+    display: inline-block;
+    font-family: 'Serifbabe', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--body-text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 1rem 0 0;
+    transition: opacity 0.25s ease;
+}
+
+.bb-detail-cta:hover {
+    opacity: 0.6;
+}
+
+.bb-detail-shipping {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: var(--body-text);
+    opacity: 0.4;
+    margin-top: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Full-width image break */
+.bb-detail-fullimg {
+    width: 100%;
+    padding: 0;
+}
+
+.bb-detail-fullimg img {
+    width: 100%;
+    max-height: 85vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Context text section */
+.bb-detail-context {
+    padding: 8rem 5%;
+}
+
+.bb-detail-context__inner {
+    max-width: 600px;
+}
+
+.bb-detail-context__inner p {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    margin: 0 0 2rem 0;
+}
+
+.bb-detail-context__trust {
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Two images side by side */
+.bb-detail-pair {
+    display: flex;
+    gap: 0;
+    padding: 0;
+}
+
+.bb-detail-pair img {
+    width: 50%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Postkarten teaser within detail page */
+.bb-detail-postkarten {
+    padding-bottom: 6rem;
+}
+
+.bb-detail-postkarten .bb-detail-intro__lead {
+    font-size: 2rem;
+}
+
+.bb-detail-coming {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+/* Sticky Buy Bar */
+.shop-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 5%;
+    background: var(--body-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.shop-sticky-bar.visible {
+    transform: translateY(0);
+}
+
+.shop-sticky-bar__info {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.shop-sticky-bar__btn {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--body-text);
+    background: #ffffff;
+    text-decoration: none;
+    padding: 10px 32px;
+    border-radius: 50px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.shop-sticky-bar__btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+/* ---- Mobile ---- */
 @media (max-width: 768px) {
-    .shop-product {
+    .shop-hero-section {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .shop-hero-image {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .shop-hero-image img {
+        height: 55vw;
+        border-radius: 6px;
+    }
+
+    .shop-hero-info {
+        width: 100%;
+        padding: 2rem 5% 3rem;
+    }
+
+    .shop-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .shop-hero-subtitle {
+        margin-bottom: 1.5rem;
+    }
+
+    .shop-hero-price {
+        font-size: 1.6rem;
+    }
+
+    .shop-story {
+        padding: 5rem 5%;
+    }
+
+    .shop-story-lead {
+        font-size: 1.3rem;
+    }
+
+    .shop-details-inner {
+        gap: 3rem;
+    }
+
+    .shop-details-number {
+        font-size: 2.5rem;
+    }
+
+    .shop-context {
+        padding: 5rem 5%;
+    }
+
+    .shop-buy-section {
+        padding: 4rem 5%;
+    }
+
+    .shop-buy-inner {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .shop-buy-left {
+        width: 100%;
+    }
+
+    .shop-buy-price {
+        font-size: 2rem;
+    }
+
+    .shop-postkarten-section {
+        min-height: auto;
+        padding-bottom: 4rem;
+    }
+
+    .shop-sticky-bar {
+        padding: 12px 5%;
+    }
+
+    .shop-sticky-bar__info {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .shop-sticky-bar__btn {
+        font-size: 0.7rem;
+        padding: 8px 24px;
+    }
+
+    /* BB Detail Page Mobile */
+    .bb-detail-hero {
+        padding-top: calc(var(--header-height) - 10px);
+    }
+
+    .bb-detail-intro {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding: 4rem 5%;
+    }
+
+    .bb-detail-intro__media {
+        width: 100%;
+    }
+
+    .bb-detail-intro__lead {
+        font-size: 1.3rem;
+    }
+
+    .bb-detail-cta {
+        font-size: 1.1rem;
+    }
+
+    .bb-detail-context {
+        padding: 4rem 5%;
+    }
+
+    .bb-detail-pair {
         flex-direction: column;
     }
 
-    .shop-product-img {
+    .bb-detail-pair img {
         width: 100%;
-        order: -1;
     }
 
-    .shop-product-img img {
-        height: 60vw;
-        object-fit: cover;
-    }
-
-    .shop-product .project-left-col {
-        padding-top: 2rem;
+    .bb-detail-postkarten {
+        padding: 4rem 5% 4rem;
     }
 }
