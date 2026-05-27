@@ -74,29 +74,14 @@
         </div>
     </header>
 
-    <!-- 1. Full-width Hero Image -->
-    <section class="bb-detail-hero">
-        <img src="bilder/01_ButterBodies/ShopSpiel.png"
-            alt="ButterBodies Kartenspiel — Verpackung und Karten ausgebreitet">
-    </section>
-
-    <!-- 2. Intro: Media left + Text right -->
-    <section class="bb-detail-intro">
-        <div class="bb-detail-intro__media">
-            <video autoplay loop muted playsinline>
-                <source src="bilder/01_ButterBodies/flippen3_weiss.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="bb-detail-intro__text">
-            <p class="bb-detail-intro__lead">
-                Filter, Vorbilder und Bildbearbeitung in den Sozialen Netzwerken erschaffen Idealbilder,
-                die biologisch oftmals gar nicht existieren.
-            </p>
-            <p class="bb-detail-intro__body">
+    <!-- Section 1: Text left (sticky), Product images right (scrollable) -->
+    <div class="project-split-layout">
+        <div class="project-left-col">
+            <p>
+                <span class="serif-text large-intro">Filter, Vorbilder und Bildbearbeitung in den Sozialen Netzwerken
+                    erschaffen Idealbilder, die biologisch oftmals gar nicht existieren.</span><br><br>
                 ButterBodies setzt genau hier an und macht Akzeptanz des eigenen Körpers spielerisch erlernbar.
-                Weg von Perfektion, hin zu echter Vielfalt.
-            </p>
-            <p class="bb-detail-intro__body">
+                Weg von Perfektion, hin zu echter Vielfalt.<br><br>
                 52 Reflexionskarten · 12 Challenges · 1 Spielanleitung<br>
                 Limitiert auf 400 Exemplare · Kein Nachdruck
             </p>
@@ -105,41 +90,46 @@
             <p class="bb-detail-shipping">+ 3,90 € Versand · 3–5 Werktage<br>
                 Kreditkarte · Apple Pay · Google Pay</p>
         </div>
-    </section>
+        <div class="project-right-col">
+            <img src="bilder/01_ButterBodies/ShopSpiel.png"
+                alt="ButterBodies Kartenspiel — Verpackung und Karten ausgebreitet">
+            <img src="bilder/01_ButterBodies/ButterbodiesKartenverpack.jpg"
+                alt="ButterBodies Verpackung in der Hand" loading="lazy">
+        </div>
+    </div>
 
-    <!-- 3. Full-width lifestyle image -->
-    <section class="bb-detail-fullimg">
+    <!-- Section 2: Flip card left, Study text right -->
+    <div class="project-split-layout bb-split-reversed">
+        <div class="project-left-col bb-media-col">
+            <video autoplay loop muted playsinline>
+                <source src="bilder/01_ButterBodies/flippen3_weiss.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="project-right-col bb-text-col">
+            <div class="bb-detail-context__inner">
+                <p>
+                    Studien zeigen, dass Mädchen bereits im Grundschulalter beginnen, ihren Körper kritisch zu bewerten.
+                    Social Media verstärkt diesen Druck massiv.
+                </p>
+                <p>
+                    ButterBodies bietet einen sicheren Rahmen, um über Körperbilder, Selbstwahrnehmung und
+                    Schönheitsnormen ins Gespräch zu kommen. Es verbindet spielerische Aktivierung mit tiefgehender
+                    Reflexion und unterstützt Fachkräfte dabei, Selbstakzeptanz, Medienkompetenz und
+                    Gruppenzusammenhalt gezielt zu fördern.
+                </p>
+                <p class="bb-detail-context__trust">
+                    Gefördert von der Stiftung Aufwind — für die psychische Gesundheit junger Menschen.<br>
+                    <span class="footnote">Basierend auf der KiGGS-Studie des Robert Koch-Instituts (RKI)</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Full-width image -->
+    <div class="bb-detail-fullimg">
         <img src="bilder/01_ButterBodies/auftisch5.jpg"
             alt="ButterBodies Karten auf dem Tisch ausgebreitet">
-    </section>
-
-    <!-- 4. Context Section -->
-    <section class="bb-detail-context">
-        <div class="bb-detail-context__inner">
-            <p>
-                Studien zeigen, dass Mädchen bereits im Grundschulalter beginnen, ihren Körper kritisch zu bewerten.
-                Social Media verstärkt diesen Druck massiv.
-            </p>
-            <p>
-                ButterBodies bietet einen sicheren Rahmen, um über Körperbilder, Selbstwahrnehmung und
-                Schönheitsnormen ins Gespräch zu kommen. Es verbindet spielerische Aktivierung mit tiefgehender
-                Reflexion und unterstützt Fachkräfte dabei, Selbstakzeptanz, Medienkompetenz und
-                Gruppenzusammenhalt gezielt zu fördern.
-            </p>
-            <p class="bb-detail-context__trust">
-                Gefördert von der Stiftung Aufwind — für die psychische Gesundheit junger Menschen.<br>
-                <span class="footnote">Basierend auf der KiGGS-Studie des Robert Koch-Instituts (RKI)</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- 5. Two images side by side -->
-    <section class="bb-detail-pair">
-        <img src="bilder/01_ButterBodies/ButterbodiesKartenverpack.jpg"
-            alt="ButterBodies Verpackung in der Hand">
-        <img src="bilder/01_ButterBodies/verpackung.png"
-            alt="ButterBodies Verpackungsdetail">
-    </section>
+    </div>
 
     <!-- Sticky Buy Bar -->
     <div class="shop-sticky-bar" id="shop-sticky-bar">
@@ -150,34 +140,34 @@
 
     <script src="main.js"></script>
     <script>
-        // Sticky Buy Bar: show after hero, hide when near bottom
+        // Sticky Buy Bar: show after first section, hide near bottom
         (function () {
             const stickyBar = document.getElementById('shop-sticky-bar');
-            const heroSection = document.querySelector('.bb-detail-hero');
-            const pairSection = document.querySelector('.bb-detail-pair');
+            const firstSection = document.querySelector('.project-split-layout');
+            const fullImg = document.querySelector('.bb-detail-fullimg');
 
-            if (stickyBar && heroSection) {
-                let pastHero = false;
-                let nearBottom = false;
+            if (stickyBar && firstSection) {
+                let pastFirst = false;
+                let atBottom = false;
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.target === heroSection) {
-                            pastHero = !entry.isIntersecting;
+                        if (entry.target === firstSection) {
+                            pastFirst = !entry.isIntersecting;
                         }
-                        if (entry.target === pairSection) {
-                            nearBottom = entry.isIntersecting;
+                        if (entry.target === fullImg) {
+                            atBottom = entry.isIntersecting;
                         }
                     });
-                    if (pastHero && !nearBottom) {
+                    if (pastFirst && !atBottom) {
                         stickyBar.classList.add('visible');
                     } else {
                         stickyBar.classList.remove('visible');
                     }
                 }, { threshold: 0.1 });
 
-                observer.observe(heroSection);
-                if (pairSection) observer.observe(pairSection);
+                observer.observe(firstSection);
+                if (fullImg) observer.observe(fullImg);
             }
         })();
     </script>

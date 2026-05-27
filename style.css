@@ -1922,65 +1922,25 @@ body {
    ButterBodies Detail Page (Editorial Layout)
 ============================================ */
 
-/* Hero: Full-width product image */
-.bb-detail-hero {
-    padding: var(--header-height) 5% 0;
-}
-
-.bb-detail-hero img {
-    width: 100%;
-    max-height: 80vh;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-/* Intro: Two-column — media left, text right */
-.bb-detail-intro {
-    display: flex;
+/* Reversed split layout: media left col, text right col */
+.bb-split-reversed .bb-media-col {
+    justify-content: center;
     align-items: center;
-    gap: 6rem;
-    padding: 8rem 5%;
+    padding: 2rem 5%;
 }
 
-.bb-detail-intro__media {
-    width: 40%;
-    flex-shrink: 0;
-}
-
-.bb-detail-intro__media img,
-.bb-detail-intro__media video {
+.bb-split-reversed .bb-media-col video {
     width: 100%;
     max-height: 70vh;
     object-fit: contain;
     display: block;
 }
 
-.bb-detail-intro__text {
-    flex: 1;
+.bb-split-reversed .bb-text-col {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.bb-detail-intro__lead {
-    font-family: 'Serifbabe', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.35;
-    color: var(--body-text);
-    margin: 0 0 2rem 0;
-    text-transform: none;
-    letter-spacing: 0;
-}
-
-.bb-detail-intro__body {
-    font-family: 'Canava Grotesk', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--body-text);
-    margin: 0 0 1.5rem 0;
+    align-items: center;
+    padding: 4rem 5% 4rem 2rem;
+    overflow: visible;
 }
 
 .bb-detail-cta {
@@ -2225,41 +2185,15 @@ body {
     }
 
     /* BB Detail Page Mobile */
-    .bb-detail-hero {
-        padding-top: calc(var(--header-height) - 10px);
-    }
-
-    .bb-detail-intro {
-        flex-direction: column;
-        gap: 2.5rem;
-        padding: 4rem 5%;
-    }
-
-    .bb-detail-intro__media {
-        width: 100%;
-    }
-
-    .bb-detail-intro__lead {
-        font-size: 1.3rem;
-    }
-
     .bb-detail-cta {
         font-size: 1.1rem;
     }
 
-    .bb-detail-context {
-        padding: 4rem 5%;
+    .bb-split-reversed .bb-media-col {
+        padding: 2rem 5%;
     }
 
-    .bb-detail-pair {
-        flex-direction: column;
-    }
-
-    .bb-detail-pair img {
-        width: 100%;
-    }
-
-    .bb-detail-postkarten {
-        padding: 4rem 5% 4rem;
+    .bb-split-reversed .bb-text-col {
+        padding: 2rem 5%;
     }
 }
