@@ -1985,20 +1985,31 @@ body {
 
 .bb-detail-cta {
     display: inline-block;
+    width: fit-content;
+    position: relative;
     font-family: 'Serifbabe', serif;
     font-size: 1.2rem;
     font-weight: 400;
     color: var(--body-text);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    text-decoration: none;
     text-transform: none;
     letter-spacing: 0;
     margin: 1rem 0 0;
-    transition: opacity 0.25s ease;
 }
 
-.bb-detail-cta:hover {
-    opacity: 0.6;
+.bb-detail-cta::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--body-text);
+    transition: width 0.3s ease;
+}
+
+.bb-detail-cta:hover::after {
+    width: 100%;
 }
 
 .bb-detail-shipping {
@@ -2038,6 +2049,8 @@ body {
     font-size: 0.8rem;
     line-height: 1.7;
     color: var(--body-text);
+    text-transform: none;
+    letter-spacing: 0;
     margin: 0 0 2rem 0;
 }
 
