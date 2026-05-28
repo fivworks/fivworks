@@ -1325,7 +1325,7 @@ body {
     display: inline-block;
     width: 160px;
     height: 64px;
-    background-image: url('bilder/button_hierkaufen.png');
+    background-image: url('bilder/button_hierkaufen.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1413,7 +1413,7 @@ body {
     display: inline-block;
     width: 130px;
     height: 52px;
-    background-image: url('bilder/button_hierkaufen.png');
+    background-image: url('bilder/button_hierkaufen.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
