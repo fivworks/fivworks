@@ -1216,7 +1216,7 @@ body {
         display: none;
     }
 
-    .bb-mobile-hero {
+    .project-right-col .bb-mobile-hero {
         display: block;
         width: 100%;
         height: 65vh;
@@ -1224,9 +1224,13 @@ body {
         object-position: top;
     }
 
-    .project-split-layout:first-of-type .project-right-col {
+    .project-right-col:has(.bb-mobile-hero) {
         order: -1;
         width: 100%;
+    }
+
+    .project-split-layout:has(.bb-mobile-hero) .project-left-col {
+        padding-top: 1.5rem;
     }
 
     .butterbodies-page .project-left-col .top-buy-wrap {
@@ -1249,7 +1253,8 @@ body {
 
     .bb-image-break {
         width: 100%;
-        height: 40vh;
+        height: auto;
+        overflow: hidden;
     }
 
     .bb-cta-section {
@@ -1461,15 +1466,47 @@ body {
         top: 0;
         height: auto;
         padding: calc(var(--header-height) + 2rem) 5% 2rem;
+        justify-content: flex-start;
     }
 
     .project-split-layout+.project-split-layout .project-left-col {
         padding-top: 2rem;
     }
 
+    #buy .project-left-col {
+        padding-top: 2rem;
+        text-align: center;
+    }
+
     .project-right-col {
         width: 100%;
         padding: 0;
+    }
+
+    .project-left-col .large-intro {
+        font-size: 1.4rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .bb-image-break {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .bb-image-break + .project-split-layout {
+        margin-top: 0;
+        min-height: auto;
+    }
+
+    .bb-image-break + .project-split-layout .project-left-col {
+        padding-top: 2rem;
+    }
+
+    .bb-cta-section {
+        padding: 4rem 5% 3rem;
     }
 
     .project-bottom-section {
@@ -2109,10 +2146,10 @@ body {
 .bb-detail-context__inner p {
     font-family: 'Canava Grotesk', sans-serif;
     font-size: 0.8rem;
-    line-height: 1.7;
+    line-height: 1.4;
     color: var(--body-text);
     text-transform: none;
-    letter-spacing: 0;
+    font-weight: 400;
     margin: 0 0 2rem 0;
 }
 
@@ -2298,5 +2335,72 @@ body {
 
     .bb-split-reversed .bb-text-col {
         padding: 2rem 5%;
+    }
+
+    /* Postkarten Gallery Mobile */
+    .postkarten-gallery {
+        padding: 0 5%;
+    }
+
+    .gallery-container {
+        position: relative;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1.5rem;
+    }
+
+    .gallery-slide {
+        position: relative;
+        inset: auto;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .gallery-slide.active {
+        display: flex;
+    }
+
+    .postkarten-gallery .gallery-slide img {
+        max-height: 60vh;
+        max-width: 100%;
+        width: auto;
+    }
+
+    .gallery-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+        top: 45%;
+    }
+
+    .gallery-arrow--left {
+        left: 0;
+    }
+
+    .gallery-arrow--right {
+        right: 0;
+    }
+
+    .gallery-counter {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 1rem;
+    }
+
+    .bb-detail-page .project-left-col {
+        padding: calc(var(--header-height) + 1.5rem) 5% 1.5rem;
+    }
+
+    .bb-detail-page .large-intro {
+        font-size: 1.6rem;
+    }
+
+    .bb-detail-fullimg img {
+        width: 100%;
     }
 }
