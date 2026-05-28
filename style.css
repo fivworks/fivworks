@@ -2018,6 +2018,85 @@ body {
     display: block;
 }
 
+/* Postkarten Gallery */
+.postkarten-gallery {
+    overflow: hidden;
+    padding: 0 5%;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-slide {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 3rem;
+}
+
+.gallery-slide.active {
+    display: flex;
+}
+
+.postkarten-gallery .gallery-slide img {
+    width: auto;
+    max-height: 75vh;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid var(--body-text);
+    color: var(--body-text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 2;
+}
+
+.gallery-arrow:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.gallery-arrow--left {
+    left: 15%;
+}
+
+.gallery-arrow--right {
+    right: 15%;
+}
+
+.gallery-counter {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--body-text);
+    opacity: 0.6;
+}
+
 /* Context text section */
 .bb-detail-context {
     padding: 8rem 5%;
