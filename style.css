@@ -559,6 +559,29 @@ body {
     width: 100%;
 }
 
+/* Legal links in menu — small, subtle */
+.menu-legal {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+}
+
+.menu-legal a {
+    font-size: 0.7rem !important;
+    letter-spacing: 1.5px !important;
+    opacity: 0.4;
+    text-transform: uppercase;
+}
+
+.menu-legal a::after {
+    display: none !important;
+}
+
+.menu-legal a:hover {
+    opacity: 1;
+}
+
 /* ---------------------------------
    Hero & 3D Cube Setup
 ---------------------------------- */
