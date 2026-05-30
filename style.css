@@ -76,6 +76,112 @@ body {
     display: none !important;
 }
 
+/* ===== FOOTER ===== */
+.site-footer {
+    padding: 3rem 5% 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(12, 12, 12, 0.08);
+    margin-top: 4rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--body-text);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.45;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-copy {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    opacity: 0.3;
+    text-transform: uppercase;
+}
+
+/* ===== LEGAL PAGES (Impressum, Datenschutz, Widerruf) ===== */
+.legal-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: calc(var(--header-height) + 4rem) 5% 4rem;
+}
+
+.legal-container h1 {
+    font-family: 'Serifbabe', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2.2rem;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 0.5rem;
+}
+
+.legal-subtitle {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    margin-bottom: 3rem;
+}
+
+.legal-container h2 {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.legal-container p {
+    font-family: 'Canava Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--body-text);
+    margin-bottom: 1rem;
+}
+
+.legal-container a {
+    color: var(--body-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.legal-container a:hover {
+    opacity: 0.6;
+}
+
+/* Widerruf link in shop shipping info */
+.shipping-legal-link {
+    color: var(--body-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: none;
+}
+
+.shipping-legal-link:hover {
+    opacity: 1;
+}
+
 /* ---------------------------------
    Pinned Header (Top Navigation)
 ---------------------------------- */
